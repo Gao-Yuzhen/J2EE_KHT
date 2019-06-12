@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/6/11/å‘¨äºŒ 15:11:47                        */
+/* Created on:     2019/6/12/ÖÜÈı 21:00:31                        */
 /*==============================================================*/
 
 
@@ -27,29 +27,29 @@ drop table if exists user;
 /*==============================================================*/
 create table Employee
 (
-   employee_id          varchar(10) not null comment 'é¦–å­—ç¬¦ä¸º''E''å…¶ä½™å­—ç¬¦ä¸ºæ•°å­—çš„å­—ç¬¦ä¸²ï¼Œæœ€å¤§é•¿åº¦ä¸å¤§äº10ä½å­—ç¬¦
-            ç¤ºä¾‹ï¼šE666666666',
-   employee_pwd         char(10),
+   employee_id          varchar(10) not null comment 'Ê××Ö·ûÎª''E''ÆäÓà×Ö·ûÎªÊı×ÖµÄ×Ö·û´®£¬×î´ó³¤¶È²»´óÓÚ10Î»×Ö·û
+            Ê¾Àı£ºE666666666',
+   employee_pwd         varchar(16),
    name                 varchar(30) not null,
    identity_number      varchar(20) not null,
    telephone            bigint(11) not null,
    email                varchar(30) not null,
    address              varchar(50) not null,
-   postion              int not null default 0 comment '0 ç®¡ç†å‘˜
-            1 å®¡æ ¸å‘˜
+   position             int not null default 0 comment '0 ¹ÜÀíÔ±
+            1 ÉóºËÔ±
             ',
-   authority            int not null default 0 comment '0 æ— æƒé™
-            1 æŸ¥çœ‹æƒé™
-            2 å®¡æ ¸æƒé™
-            3 ç³»ç»Ÿå‚æ•°ä¿®æ”¹æƒé™
-            4 å‘˜å·¥ç®¡ç†æƒé™',
-   employee_state       int not null default 0 comment '0 åœ¨èŒ
-            1 åœèŒ
-            2 ç¦»èŒ',
+   authority            int not null default 0 comment '0 ÎŞÈ¨ÏŞ
+            1 ²é¿´È¨ÏŞ
+            2 ÉóºËÈ¨ÏŞ
+            3 ÏµÍ³²ÎÊıĞŞ¸ÄÈ¨ÏŞ
+            4 Ô±¹¤¹ÜÀíÈ¨ÏŞ',
+   employee_state       int not null default 0 comment '0 ÔÚÖ°
+            1 Í£Ö°
+            2 ÀëÖ°',
    primary key (employee_id)
 );
 
-alter table Employee comment 'ç”¨äºå­˜æ”¾å‘˜å·¥ä¿¡æ¯';
+alter table Employee comment 'ÓÃÓÚ´æ·ÅÔ±¹¤ĞÅÏ¢';
 
 /*==============================================================*/
 /* Table: capital_account                                       */
@@ -63,44 +63,44 @@ create table capital_account
    primary key (capital_id)
 );
 
-alter table capital_account comment 'ç”¨äºå­˜æ”¾èµ„é‡‘è´¦æˆ·çš„ä¿¡æ¯ï¼ˆå­˜æ”¾å¼€æˆ·ä¿¡æ¯çš„ä¸€éƒ¨åˆ†ï¼‰ï¼Œä¸€ä¸ªå®¢æˆ·è´¦æˆ·å¯æ‹¥æœ‰è‡³å°‘ä¸€ä¸ªèµ„é‡‘è´¦æˆ·';
+alter table capital_account comment 'ÓÃÓÚ´æ·Å×Ê½ğÕË»§µÄĞÅÏ¢£¨´æ·Å¿ª»§ĞÅÏ¢µÄÒ»²¿·Ö£©£¬Ò»¸ö¿Í»§ÕË»§¿ÉÓµÓĞÖÁÉÙÒ»¸ö×Ê½ğÕË»§';
 
 /*==============================================================*/
 /* Table: customer_account                                      */
 /*==============================================================*/
 create table customer_account
 (
-   customer_id          varchar(10) not null comment 'é¦–å­—ç¬¦ä¸º''C''å…¶ä½™å­—ç¬¦ä¸ºæ•°å­—çš„å­—ç¬¦ä¸²ï¼Œæœ€å¤§é•¿åº¦ä¸å¤§äº10ä½å­—ç¬¦
-            ç¤ºä¾‹ï¼šC666666666',
+   customer_id          varchar(10) not null comment 'Ê××Ö·ûÎª''C''ÆäÓà×Ö·ûÎªÊı×ÖµÄ×Ö·û´®£¬×î´ó³¤¶È²»´óÓÚ10Î»×Ö·û
+            Ê¾Àı£ºC666666666',
    name                 varchar(30) not null,
-   certificate_type     int not null default 0 comment '0 èº«ä»½è¯
-            1 è¥ä¸šæ‰§ç…§',
+   certificate_type     int not null default 0 comment '0 Éí·İÖ¤
+            1 ÓªÒµÖ´ÕÕ',
    certificate_id       varchar(20) not null,
    address              varchar(50) not null,
    job                  varchar(20) not null,
-   education            int not null default 0 comment '0 å°å­¦
-            1 åˆä¸­
-            2 é«˜ä¸­
-            3 ä¸“ç§‘
-            4 æœ¬ç§‘
-            5 ç ”ç©¶ç”Ÿ
-            7 å…¶å®ƒ',
+   education            int not null default 0 comment '0 Ğ¡Ñ§
+            1 ³õÖĞ
+            2 ¸ßÖĞ
+            3 ×¨¿Æ
+            4 ±¾¿Æ
+            5 ÑĞ¾¿Éú
+            7 ÆäËü',
    email                varchar(30) not null,
    organization_id      varchar(10) not null default '0',
    image_1              varchar(50) not null,
    image_2              varchar(50) not null,
    face_image           varchar(50) not null,
-   investor_type        int not null default 0 comment '0 æ™®é€š
-            1 ä¿å®ˆ
-            2 æ¿€è¿›',
+   investor_type        int not null default 0 comment '0 ÆÕÍ¨
+            1 ±£ÊØ
+            2 ¼¤½ø',
    commit_time          bigint not null default 0,
-   state                int not null default 0 comment '0 å¾…å®¡æ ¸
-            1 å®¡æ ¸é€šè¿‡
-            2 å®¡æ ¸æœªé€šè¿‡',
+   state                int not null default 0 comment '0 ´ıÉóºË
+            1 ÉóºËÍ¨¹ı
+            2 ÉóºËÎ´Í¨¹ı',
    primary key (customer_id)
 );
 
-alter table customer_account comment 'ç”¨äºå­˜æ”¾å®¢æˆ·è´¦æˆ·çš„ä¿¡æ¯ï¼ˆå­˜æ”¾å¼€æˆ·ä¿¡æ¯çš„ä¸€éƒ¨åˆ†ï¼‰ï¼Œä¸€ä¸ªå®¢æˆ·åªæœ‰ä¸€ä¸ªå®¢æˆ·è´¦æˆ·';
+alter table customer_account comment 'ÓÃÓÚ´æ·Å¿Í»§ÕË»§µÄĞÅÏ¢£¨´æ·Å¿ª»§ĞÅÏ¢µÄÒ»²¿·Ö£©£¬Ò»¸ö¿Í»§Ö»ÓĞÒ»¸ö¿Í»§ÕË»§';
 
 /*==============================================================*/
 /* Table: depository_account                                    */
@@ -108,26 +108,26 @@ alter table customer_account comment 'ç”¨äºå­˜æ”¾å®¢æˆ·è´¦æˆ·çš„ä¿¡æ¯ï¼ˆå­˜æ”¾
 create table depository_account
 (
    depository_id        varchar(10) not null,
-   bank_type            int not null default 0 comment '0 ä¸­å›½å·¥å•†é“¶è¡Œ
-            1 ä¸­å›½å†œä¸šé“¶è¡Œ
-            2 ä¸­å›½é“¶è¡Œ
-            3 ä¸­å›½å»ºè®¾é“¶è¡Œ
-            4 ä¸­å›½å…‰å¤§é“¶è¡Œ
-            5 ä¸­å›½æ°‘ç”Ÿé“¶è¡Œ
-            6 æ‹›å•†é“¶è¡Œ
-            7 åå¤é“¶è¡Œ
-            8 äº¤é€šé“¶è¡Œ
-            9 å…´ä¸šé“¶è¡Œ
-            10 æ’ä¸°é“¶è¡Œ
-            11 ä¸­ä¿¡é“¶è¡Œ
-            12 ä¸Šæµ·æµ¦ä¸œå‘å±•é“¶è¡Œ
-            13 å¹¿ä¸œå‘å±•é“¶è¡Œ
-            14 æ·±åœ³å‘å±•é“¶è¡Œ',
+   bank_type            int not null default 0 comment '0 ÖĞ¹ú¹¤ÉÌÒøĞĞ
+            1 ÖĞ¹úÅ©ÒµÒøĞĞ
+            2 ÖĞ¹úÒøĞĞ
+            3 ÖĞ¹ú½¨ÉèÒøĞĞ
+            4 ÖĞ¹ú¹â´óÒøĞĞ
+            5 ÖĞ¹úÃñÉúÒøĞĞ
+            6 ÕĞÉÌÒøĞĞ
+            7 »ªÏÄÒøĞĞ
+            8 ½»Í¨ÒøĞĞ
+            9 ĞËÒµÒøĞĞ
+            10 ºã·áÒøĞĞ
+            11 ÖĞĞÅÒøĞĞ
+            12 ÉÏº£ÆÖ¶«·¢Õ¹ÒøĞĞ
+            13 ¹ã¶«·¢Õ¹ÒøĞĞ
+            14 ÉîÛÚ·¢Õ¹ÒøĞĞ',
    bank_card_number     varchar(20) not null,
    primary key (depository_id)
 );
 
-alter table depository_account comment 'ç”¨äºå­˜æ”¾å­˜ç®¡è´¦æˆ·çš„ä¿¡æ¯ï¼ˆå­˜æ”¾å¼€æˆ·ä¿¡æ¯çš„ä¸€éƒ¨åˆ†ï¼‰ï¼Œä¸€ä¸ªèµ„é‡‘è´¦æˆ·å¯¹åº”ä¸€ä¸ªå­˜ç®¡è´¦æˆ·';
+alter table depository_account comment 'ÓÃÓÚ´æ·Å´æ¹ÜÕË»§µÄĞÅÏ¢£¨´æ·Å¿ª»§ĞÅÏ¢µÄÒ»²¿·Ö£©£¬Ò»¸ö×Ê½ğÕË»§¶ÔÓ¦Ò»¸ö´æ¹ÜÕË»§';
 
 /*==============================================================*/
 /* Table: menu                                                  */
@@ -135,23 +135,23 @@ alter table depository_account comment 'ç”¨äºå­˜æ”¾å­˜ç®¡è´¦æˆ·çš„ä¿¡æ¯ï¼ˆå­˜æ
 create table menu
 (
    id                   int not null auto_increment,
-   authority            int not null default 0 comment '0 æ— æƒé™
-            1 æŸ¥çœ‹æƒé™
-            2 å®¡æ ¸æƒé™
-            3 ç³»ç»Ÿå‚æ•°ä¿®æ”¹æƒé™
-            4 å‘˜å·¥ç®¡ç†æƒé™',
-   operation            int not null default 0 comment '0 ç™»å½•
-            1 æŸ¥çœ‹
-            2 å®¡æ ¸
-            3 æŸ¥è¯¢ç»Ÿè®¡
-            4 ä¿®æ”¹ç³»ç»Ÿå‚æ•°
-            5.ä¿®æ”¹å‘˜å·¥æƒé™
-            6 ä¿®æ”¹å‘˜å·¥ä¿¡æ¯
+   authority            int not null default 0 comment '0 ÎŞÈ¨ÏŞ
+            1 ²é¿´È¨ÏŞ
+            2 ÉóºËÈ¨ÏŞ
+            3 ÏµÍ³²ÎÊıĞŞ¸ÄÈ¨ÏŞ
+            4 Ô±¹¤¹ÜÀíÈ¨ÏŞ',
+   operation            int not null default 0 comment '0 µÇÂ¼
+            1 ²é¿´
+            2 ÉóºË
+            3 ²éÑ¯Í³¼Æ
+            4 ĞŞ¸ÄÏµÍ³²ÎÊı
+            5.ĞŞ¸ÄÔ±¹¤È¨ÏŞ
+            6 ĞŞ¸ÄÔ±¹¤ĞÅÏ¢
             ',
    primary key (id)
 );
 
-alter table menu comment 'ç”¨äºè®°å½•ä¸åŒæƒé™å¯æ‰§è¡Œçš„æ“ä½œåˆ—è¡¨';
+alter table menu comment 'ÓÃÓÚ¼ÇÂ¼²»Í¬È¨ÏŞ¿ÉÖ´ĞĞµÄ²Ù×÷ÁĞ±í';
 
 /*==============================================================*/
 /* Table: operation_log                                         */
@@ -160,37 +160,37 @@ create table operation_log
 (
    id                   int not null auto_increment,
    time                 bigint not null default 0,
-   employee_id          varchar(10) not null comment 'æ‰§è¡Œæ“ä½œçš„å‘˜å·¥çš„è´¦å·',
-   operated_personnel   varchar(10) not null comment 'å—æ“ä½œå½±å“çš„äººå‘˜è´¦å·ï¼Œä¾‹å¦‚å²—ä½å˜æ›´ï¼Œæƒé™ä¿®æ”¹ç­‰
-            å¦‚æœä¸å­˜åœ¨ï¼Œé»˜è®¤ä¸º""',
-   operation            int not null default 0 comment '0 ç™»å½•
-            1 æŸ¥çœ‹
-            2 å®¡æ ¸
-            3 æŸ¥è¯¢ç»Ÿè®¡
-            4 ä¿®æ”¹ç³»ç»Ÿå‚æ•°
-            5.ä¿®æ”¹å‘˜å·¥æƒé™
-            6 ä¿®æ”¹å‘˜å·¥ä¿¡æ¯
+   employee_id          varchar(10) not null comment 'Ö´ĞĞ²Ù×÷µÄÔ±¹¤µÄÕËºÅ',
+   operated_personnel   varchar(10) not null comment 'ÊÜ²Ù×÷Ó°ÏìµÄÈËÔ±ÕËºÅ£¬ÀıÈç¸ÚÎ»±ä¸ü£¬È¨ÏŞĞŞ¸ÄµÈ
+            Èç¹û²»´æÔÚ£¬Ä¬ÈÏÎª""',
+   operation            int not null default 0 comment '0 µÇÂ¼
+            1 ²é¿´
+            2 ÉóºË
+            3 ²éÑ¯Í³¼Æ
+            4 ĞŞ¸ÄÏµÍ³²ÎÊı
+            5.ĞŞ¸ÄÔ±¹¤È¨ÏŞ
+            6 ĞŞ¸ÄÔ±¹¤ĞÅÏ¢
             ',
-   description          varchar(30) not null comment 'æè¿°è¯¦ç»†çš„æ“ä½œï¼ŒåŒ…æ‹¬æ“ä½œçš„å†…å®¹ï¼Œå¦‚ä¿®æ”¹äº†ä»€ä¹ˆä¿¡æ¯',
+   description          varchar(30) not null comment 'ÃèÊöÏêÏ¸µÄ²Ù×÷£¬°üÀ¨²Ù×÷µÄÄÚÈİ£¬ÈçĞŞ¸ÄÁËÊ²Ã´ĞÅÏ¢',
    primary key (id)
 );
 
-alter table operation_log comment 'è®°å½•å‘˜å·¥æ“ä½œæµæ°´';
+alter table operation_log comment '¼ÇÂ¼Ô±¹¤²Ù×÷Á÷Ë®';
 
 /*==============================================================*/
 /* Table: organization                                          */
 /*==============================================================*/
 create table organization
 (
-   organization_id      varchar(10) not null comment 'é¦–å­—ç¬¦ä¸º''O''å…¶ä½™å­—ç¬¦ä¸ºæ•°å­—çš„å­—ç¬¦ä¸²ï¼Œæœ€å¤§é•¿åº¦ä¸å¤§äº10ä½å­—ç¬¦
-            ç¤ºä¾‹ï¼šO666666666',
+   organization_id      varchar(10) not null comment 'Ê××Ö·ûÎª''O''ÆäÓà×Ö·ûÎªÊı×ÖµÄ×Ö·û´®£¬×î´ó³¤¶È²»´óÓÚ10Î»×Ö·û
+            Ê¾Àı£ºO666666666',
    organizatin_name     varchar(20) not null,
    organization_address varchar(50) not null,
    telephone            bigint(11) not null,
    primary key (organization_id)
 );
 
-alter table organization comment 'ç”¨äºå­˜æ”¾æœºæ„ä¿¡æ¯';
+alter table organization comment 'ÓÃÓÚ´æ·Å»ú¹¹ĞÅÏ¢';
 
 /*==============================================================*/
 /* Table: securities_account                                    */
@@ -199,12 +199,12 @@ create table securities_account
 (
    securities_id        varchar(10) not null,
    customer_id          varchar(10) not null,
-   securities_type      int comment '0 ä¸Šæµ·è¯åˆ¸è´¦æˆ·
-            1 æ·±åœ³è¯åˆ¸è´¦æˆ·',
+   securities_type      int comment '0 ÉÏº£Ö¤È¯ÕË»§
+            1 ÉîÛÚÖ¤È¯ÕË»§',
    primary key (securities_id)
 );
 
-alter table securities_account comment 'ç”¨äºå­˜æ”¾è¯åˆ¸è´¦æˆ·çš„ä¿¡æ¯ï¼Œä¸€ä¸ªå®¢æˆ·è´¦æˆ·å¯¹åº”å¤šä¸ªè¯åˆ¸è´¦æˆ·';
+alter table securities_account comment 'ÓÃÓÚ´æ·ÅÖ¤È¯ÕË»§µÄĞÅÏ¢£¬Ò»¸ö¿Í»§ÕË»§¶ÔÓ¦¶à¸öÖ¤È¯ÕË»§';
 
 /*==============================================================*/
 /* Table: user                                                  */
@@ -218,7 +218,7 @@ create table user
    primary key (id)
 );
 
-alter table user comment 'ç”¨äºå­˜æ”¾ç”¨æˆ·ä¿¡æ¯ï¼Œä¸€ä¸ªç”¨æˆ·ä»…å¯¹åº”ä¸€ä¸ªå®¢æˆ·è´¦æˆ·';
+alter table user comment 'ÓÃÓÚ´æ·ÅÓÃ»§ĞÅÏ¢£¬Ò»¸öÓÃ»§½ö¶ÔÓ¦Ò»¸ö¿Í»§ÕË»§';
 
 alter table capital_account add constraint FK_Reference_2 foreign key (customer_id)
       references customer_account (customer_id) on delete restrict on update restrict;
