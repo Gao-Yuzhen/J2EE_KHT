@@ -14,7 +14,7 @@ https://desktop.github.com/
 5、在desktop中保存到本地文件夹，当本地文件中内容更改后，desktop中会出现changes，然后commit、push到仓库里
 
 
-6、回到网页版，pull request
+6、回到网页版，new pull request
 
 
 7、对比更改后create pull request
