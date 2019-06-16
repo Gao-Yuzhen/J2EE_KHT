@@ -1,7 +1,8 @@
 ﻿/*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/6/16/周日 10:25:40                        */
+/* Created on:     2019/6/16/周日 14:29:57                        */
 /*==============================================================*/
+
 
 drop table if exists CAP_ACCT;
 
@@ -61,7 +62,7 @@ create table ACCT_OPEN_INFO
    ANS_EIGHT            char(1) not null default 'A',
    ANS_NINE             char(1) not null default 'A',
    ANS_TEN              char(1) not null default 'A',
-   BANK_TYPE            char(1) not null default '0',
+   BANK_TYPE            char(2) not null default '0',
    BANK_CARD_CODE       varchar(20) not null,
    CMT_TIME             bigint not null default 0,
    INFO_STATUS          char(1) not null default '0',
@@ -126,7 +127,7 @@ alter table CUST_ACCT comment '用于存放客户账户的信息（存放开户�
 create table DEP_ACCT
 (
    DEP_CODE             varchar(12) not null,
-   BANK_TYPE            char(1) not null default '0' comment '0 中国工商银行
+   BANK_TYPE            char(2) not null default '0' comment '0 中国工商银行
             1 中国农业银行
             2 中国银行
             3 中国建设银行
@@ -156,7 +157,7 @@ alter table DEP_ACCT comment '用于存放存管账户的信息（存放开户�
 create table EMPLOYEE
 (
    EMPLOYEE_CODE        varchar(12) not null,
-   POS_CODE             int not null comment '自增',
+   POS_CODE             int not null,
    EMPLOYEE_PWD         varchar(25) not null,
    EMPLOYEE_NAME        varchar(15) not null,
    ID_CODE              varchar(20) not null,
@@ -207,7 +208,7 @@ create table OPERA_LOG
    LOG_TIME             bigint not null default 0,
    OPERATED_OBJ         varchar(12) not null comment '受操作影响的人员账号，例如岗位变更，权限修改等
             如果不存在，默认为""',
-   OPERATION            char(1) not null default '0' comment '
+   OPERATION            char(2) not null default '0' comment '
             ',
    DESCRIPTION          varchar(30) not null comment '描述详细的操作，包括操作的内容，如修改了什么信息',
    primary key (LOG_CODE)
@@ -234,9 +235,9 @@ alter table ORGANIZATION comment '用于存放营业网点信息';
 /*==============================================================*/
 create table POSITION
 (
-   POS_CODE             int not null auto_increment comment '自增',
+   POS_CODE             int not null auto_increment,
    POSITION             char(1) not null default '0',
-   OPERATION            char(1) not null default '0',
+   OPERATION            char(2) not null default '0',
    primary key (POS_CODE)
 );
 
