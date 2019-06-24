@@ -2,40 +2,44 @@
 /* 清除表格原有数据                      */
 /* ===================================== */
 
-delete from DEP_ACCT;
+delete from dep_acct;
 
-delete from CAP_ACCT;
+delete from cap_acct;
 
-delete from TRD_ACCT;
+delete from trd_acct;
 
-delete from CUST_ACCT;
+delete from cust_acct;
 
-delete from ACCT_OPEN_INFO;
+delete from acct_open_info;
 
-delete from IMAGE;
+delete from image;
 
-delete from ORGANIZATION;
+delete from organization;
 
-delete from OPERA_LOG;
+delete from opera_log;
 
-delete from EMPLOYEE;
+delete from employee;
 
-delete from USER;
+delete from user;
 
-delete from POSITION;
+delete from pos_opera_rel;
 
-delete from SUB_DATA_DICT;
+delete from operation;
 
-delete from MAIN_DATA_DICT;
+delete from position;
 
-delete from SYS_PARA;
+delete from sub_data_dict;
+
+delete from main_data_dict;
+
+delete from sys_para;
 
 /* ===================================== */
 /* 插入默认数据                          */
 /* ===================================== */
 
 /*
-insert into IMAGE values
+insert into image values
 (
    0, 
    "", 
@@ -43,7 +47,7 @@ insert into IMAGE values
    ""
 );
 
-insert into ORGANIZATION values
+insert into organization values
 (
    "", 
    "", 
@@ -51,7 +55,7 @@ insert into ORGANIZATION values
    0
 );
 
-insert into ACCT_OPEN_INFO values
+insert into acct_open_info values
 (
    0, 
    1, 
@@ -85,7 +89,7 @@ insert into ACCT_OPEN_INFO values
    '0'
 );
 
-insert into CUST_ACCT values
+insert into cust_acct values
 (
    "", 
    1, 
@@ -108,7 +112,7 @@ insert into CUST_ACCT values
    '0'
 );
 
-insert into USER values
+insert into user values
 (
    0, 
    1, 
@@ -117,7 +121,7 @@ insert into USER values
    ""
 );
 
-insert into DEP_ACCT values
+insert into dep_acct values
 (
    "", 
    "00", 
@@ -127,7 +131,7 @@ insert into DEP_ACCT values
    '0'
 );
 
-insert into CAP_ACCT values
+insert into cap_acct values
 (
    "", 
    "", 
@@ -142,7 +146,7 @@ insert into CAP_ACCT values
    '0'
 );
 
-insert into TRD_ACCT values
+insert into trd_acct values
 (
    "", 
    "", 
@@ -155,14 +159,14 @@ insert into TRD_ACCT values
    '0'
 );
 
-insert into POSITION values
+insert into position values
 (
    0, 
    '0', 
    '0'
 );
 
-insert into EMPLOYEE values
+insert into employee values
 (
    "", 
    1, 
@@ -175,7 +179,7 @@ insert into EMPLOYEE values
    '0'
 );
 
-insert into OPERA_LOG values
+insert into opera_log values
 (
    0, 
    "",
@@ -189,137 +193,118 @@ insert into OPERA_LOG values
 /* ================================== */
 /* 初始化数据字典信息                 */
 /* ================================== */
-insert into MAIN_DATA_DICT values
+insert into main_data_dict values
 (
    0, 
    "性别", 
    "GENDER", 
-   "ACCT_OPEN_INFO"
+   "acct_open_info"
 ),
 (
    0,
    "证件类型",
    "ID_TYPE",
-   "ACCT_OPEN_INFO"
+   "acct_open_info"
 ),
 (
    0,
    "学历",
    "EDUCATION",
-   "ACCT_OPEN_INFO"
+   "acct_open_info"
 ),
 (
    0,
    "银行类型",
    "BANK_TYPE",
-   "ACCT_OPEN_INFO"
+   "acct_open_info"
 ),
 (
    0,
    "开户渠道",
    "OPEN_CHANNEL",
-   "ACCT_OPEN_INFO"
+   "acct_open_info"
 ),
 (
    0,
    "状态",
    "INFO_STATUS",
-   "ACCT_OPEN_INFO"
+   "acct_open_info"
 ),
 (
    0,
    "性别",
    "GENDER",
-   "CUST_ACCT"
+   "cust_acct"
 ),
 (
    0,
    "证件类型",
    "ID_TYPE",
-   "CUST_ACCT"
+   "cust_acct"
 ),
 (
    0,
    "学历",
    "EDUCATION",
-   "CUST_ACCT"
+   "cust_acct"
 ),
 (
    0,
    "投资者类型",
    "INVESTOR_TYPE",
-   "CUST_ACCT"
+   "cust_acct"
 ),
 (
    0,
    "状态",
-   "CUST_ACCT",
-   "CUST_ACCT"
+   "cust_acct",
+   "cust_acct"
 ),
 (
    0,
    "银行类型",
    "BANK_TYPE",
-   "DEP_ACCT"
+   "dep_acct"
 ),
 (
    0,
    "状态",
    "DEP_STATUS",
-   "DEP_ACCT"
+   "dep_acct"
 ),
 (
    0,
    "币种",
    "CURRENCY",
-   "CAP_ACCT"
+   "cap_acct"
 ),
 (
    0,
    "属性",
    "ATTR",
-   "CAP_ACCT"
+   "cap_acct"
 ),
 (
    0,
    "状态",
    "CAP_STATUS",
-   "CAP_ACCT"
-),
-(
-   0,
-   "岗位",
-   "POSITION",
-   "POSITION"
-),
-(
-   0,
-   "操作",
-   "OPERATION",
-   "POSITION"
-),
-(
-   0,
-   "岗位",
-   "POSITION",
-   "EMPLOYEE"
+   "cap_acct"
 ),
 (
    0,
    "员工状态",
-   "EMPLOYEE_STATUS",
-   "EMPLOYEE"
+   "employee_STATUS",
+   "employee"
 ),
 (
    0,
-   "操作",
-   "OPERATION",
-   "OPERA_LOG"
-)
-;
+   "用户类型",
+   "USER_TYPE",
+   "user"
+);
 
 
-insert into SUB_DATA_DICT values
+insert into sub_data_dict values
 (
    0, 
    1, 
@@ -741,649 +726,169 @@ insert into SUB_DATA_DICT values
    "销户"
 ),
 (
-   0, 
-   17, 
-   "0", 
-   "审核员LV1"
-),
-(
-   0, 
-   17, 
-   "1", 
-   "审核员LV2"
-),
-(
-   0, 
-   17, 
-   "2", 
-   "审核员LV3"
-),
-(
-   0, 
-   17, 
-   "3", 
-   "管理员LV1"
-),
-(
-   0, 
-   17, 
-   "4", 
-   "管理员LV2"
-),
-(
-   0, 
-   17, 
-   "5", 
-   "管理员LV3"
-),
-(
-   0, 
-   17, 
-   "6", 
-   "超级管理员"
-),
-(
-   0, 
-   18, 
-   "00", 
-   "查看个人信息"
-),
-(
-   0, 
-   18, 
-   "01", 
-   "修改个人信息"
-),
-(
-   0, 
-   18, 
-   "02", 
-   "查看用户信息"
-),
-(
    0,
-   18,
-   "03",
-   "修改用户信息"
-),
-(
-   0,
-   18,
-   "04",
-   "查看员工信息"
-),
-(
-   0,
-   18,
-   "05",
-   "修改员工信息"
-),
-(
-   0,
-   18,
-   "06",
-   "查看待审核资料"
-),
-(
-   0,
-   18,
-   "07",
-   "提交审核结果"
-),
-(
-   0,
-   18,
-   "08",
-   "查看系统参数"
-),
-(
-   0,
-   18,
-   "09",
-   "修改系统参数"
-),
-(
-   0,
-   18,
-   "10",
-   "查看数据字典信息"
-),
-(
-   0,
-   18,
-   "11",
-   "添加数据字典信息"
-),
-(
-   0,
-   18,
-   "12",
-   "修改数据字典信息"
-),
-(
-   0,
-   18,
-   "13",
-   "删除数据字典信息"
-),
-(
-   0,
-   18,
-   "14",
-   "修改员工权限"
-),
-(
-   0,
-   18,
-   "15",
-   "创建员工账户"
-),
-(
-   0,
-   18,
-   "16",
-   "删除员工账户"
-),
-(
-   0, 
-   19, 
-   "0", 
-   "审核员LV1"
-),
-(
-   0, 
-   19, 
-   "1", 
-   "审核员LV2"
-),
-(
-   0, 
-   19, 
-   "2", 
-   "审核员LV3"
-),
-(
-   0, 
-   19, 
-   "3", 
-   "管理员LV1"
-),
-(
-   0, 
-   19, 
-   "4", 
-   "管理员LV2"
-),
-(
-   0, 
-   19, 
-   "5", 
-   "管理员LV3"
-),
-(
-   0, 
-   19, 
-   "6", 
-   "超级管理员"
-),
-(
-   0,
-   20,
+   17,
    "0",
    "在职"
 ),
 (
    0,
-   20,
+   17,
    "1",
    "停职"
 ),
 (
    0,
-   20,
+   17,
    "2",
    "离职"
 ),
 (
-   0, 
-   21, 
-   "00", 
-   "查看个人信息"
-),
-(
-   0, 
-   21, 
-   "01", 
-   "修改个人信息"
-),
-(
-   0, 
-   21, 
-   "02", 
-   "查看用户信息"
+   0,
+   18,
+   "0",
+   "客户"
 ),
 (
    0,
-   21,
-   "03",
-   "修改用户信息"
-),
-(
-   0,
-   21,
-   "04",
-   "查看员工信息"
-),
-(
-   0,
-   21,
-   "05",
-   "修改员工信息"
-),
-(
-   0,
-   21,
-   "06",
-   "查看待审核资料"
-),
-(
-   0,
-   21,
-   "07",
-   "提交审核结果"
-),
-(
-   0,
-   21,
-   "08",
-   "查看系统参数"
-),
-(
-   0,
-   21,
-   "09",
-   "修改系统参数"
-),
-(
-   0,
-   21,
-   "10",
-   "查看数据字典信息"
-),
-(
-   0,
-   21,
-   "11",
-   "添加数据字典信息"
-),
-(
-   0,
-   21,
-   "12",
-   "修改数据字典信息"
-),
-(
-   0,
-   21,
-   "13",
-   "删除数据字典信息"
-),
-(
-   0,
-   21,
-   "14",
-   "修改员工权限"
-),
-(
-   0,
-   21,
-   "15",
-   "创建员工账户"
-),
-(
-   0,
-   21,
-   "16",
-   "删除员工账户"
+   18,
+   "1",
+   "员工"
 );
 
 /* =================================== */
 /* 插入岗位信息                        */
 /* =================================== */
 
-insert into POSITION values
+insert into position values
 (
    0,
-   '0',
-   "00"
+   "审核员LV1"
 ),
 (
    0,
-   '0',
-   "01"
+   "审核员LV2"
 ),
 (
    0,
-   '0',
-   "06"
+   "审核员LV3"
 ),
 (
    0,
-   '0',
-   "07"
+   "管理员LV1"
 ),
 (
    0,
-   '1',
-   "00"
+   "管理员LV2"
 ),
 (
    0,
-   '1',
-   "01"
+   "管理员LV3"
 ),
 (
    0,
-   '1',
-   "02"
-),
-(
-   0,
-   '1',
-   "06"
-),
-(
-   0,
-   '1',
-   "07"
-),
-(
-   0,
-   '2',
-   "00"
-),
-(
-   0,
-   '2',
-   "01"
-),
-(
-   0,
-   '2',
-   "02"
-),
-(
-   0,
-   '2',
-   "03"
-),
-(
-   0,
-   '2',
-   "06"
-),
-(
-   0,
-   '2',
-   "07"
-),
-(
-   0,
-   '3',
-   "00"
-),
-(
-   0,
-   '3',
-   "01"
-),
-(
-   0,
-   '3',
-   "02"
-),
-(
-   0,
-   '3',
-   "04"
-),
-(
-   0,
-   '3',
-   "08"
-),
-(
-   0,
-   '3',
-   "10"
-),
-(
-   0,
-   '4',
-   "00"
-),
-(
-   0,
-   '4',
-   "01"
-),
-(
-   0,
-   '4',
-   "02"
-),
-(
-   0,
-   '4',
-   "03"
-),
-(
-   0,
-   '4',
-   "04"
-),
-(
-   0,
-   '4',
-   "05"
-),
-(
-   0,
-   '4',
-   "08"
-),
-(
-   0,
-   '4',
-   "09"
-),
-(
-   0,
-   '4',
-   "10"
-),
-(
-   0,
-   '4',
-   "11"
-),
-(
-   0,
-   '4',
-   "12"
-),
-(
-   0,
-   '4',
-   "13"
-),
-(
-   0,
-   '5',
-   "00"
-),
-(
-   0,
-   '5',
-   "01"
-),
-(
-   0,
-   '5',
-   "02"
-),
-(
-   0,
-   '5',
-   "03"
-),
-(
-   0,
-   '5',
-   "04"
-),
-(
-   0,
-   '5',
-   "05"
-),
-(
-   0,
-   '5',
-   "06"
-),
-(
-   0,
-   '5',
-   "07"
-),
-(
-   0,
-   '5',
-   "08"
-),
-(
-   0,
-   '5',
-   "09"
-),
-(
-   0,
-   '5',
-   "10"
-),
-(
-   0,
-   '5',
-   "11"
-),
-(
-   0,
-   '5',
-   "12"
-),
-(
-   0,
-   '5',
-   "13"
-),
-(
-   0,
-   '5',
-   "14"
-),
-(
-   0,
-   '6',
-   "00"
-),
-(
-   0,
-   '6',
-   "01"
-),
-(
-   0,
-   '6',
-   "02"
-),
-(
-   0,
-   '6',
-   "03"
-),
-(
-   0,
-   '6',
-   "04"
-),
-(
-   0,
-   '6',
-   "05"
-),
-(
-   0,
-   '6',
-   "06"
-),
-(
-   0,
-   '6',
-   "07"
-),
-(
-   0,
-   '6',
-   "08"
-),
-(
-   0,
-   '6',
-   "09"
-),
-(
-   0,
-   '6',
-   "10"
-),
-(
-   0,
-   '6',
-   "11"
-),
-(
-   0,
-   '6',
-   "12"
-),
-(
-   0,
-   '6',
-   "13"
-),
-(
-   0,
-   '6',
-   "14"
-),
-(
-   0,
-   '6',
-   "15"
-),
-(
-   0,
-   '6',
-   "16"
+   "超级管理员"
 );
+
+/* =================================== */
+/* 插入操作信息                        */
+/* =================================== */
+
+/*
+insert into operation values
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+),
+(
+   0,
+   "",
+   ""
+);
+*/
 
 /* =================================== */
 /* 插入系统参数                        */
 /* =================================== */
 
 /*
-insert into SYS_PARA values
+insert into sys_para values
 (
    0, 
    "", 
