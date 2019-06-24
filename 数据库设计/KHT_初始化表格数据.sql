@@ -293,7 +293,7 @@ insert into main_data_dict values
 (
    0,
    "员工状态",
-   "employee_STATUS",
+   "EMPLOYEE_STATUS",
    "employee"
 ),
 (

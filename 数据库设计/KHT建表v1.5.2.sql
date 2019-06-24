@@ -1,45 +1,45 @@
 ﻿/*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/6/24/周一 11:12:15                        */
+/* Created on:     2019/6/24/周一 16:35:28                        */
 /*==============================================================*/
 
 
-drop table if exists DEP_ACCT;
+drop table if exists dep_acct;
 
-drop table if exists CAP_ACCT;
+drop table if exists cap_acct;
 
-drop table if exists TRD_ACCT;
+drop table if exists trd_acct;
 
-drop table if exists CUST_ACCT;
+drop table if exists cust_acct;
 
-drop table if exists ACCT_OPEN_INFO;
+drop table if exists acct_open_info;
 
-drop table if exists IMAGE;
+drop table if exists image;
 
-drop table if exists ORGANIZATION;
+drop table if exists organization;
 
-drop table if exists OPERA_LOG;
+drop table if exists opera_log;
 
-drop table if exists EMPLOYEE;
+drop table if exists employee;
 
-drop table if exists USER;
+drop table if exists user;
 
-drop table if exists POS_OPERA_REL;
+drop table if exists pos_opera_rel;
 
-drop table if exists OPERATION;
+drop table if exists operation;
 
-drop table if exists POSITION;
+drop table if exists position;
 
-drop table if exists SUB_DATA_DICT;
+drop table if exists sub_data_dict;
 
-drop table if exists MAIN_DATA_DICT;
+drop table if exists main_data_dict;
 
-drop table if exists SYS_PARA;
+drop table if exists sys_para;
 
 /*==============================================================*/
-/* Table: ACCT_OPEN_INFO                                        */
+/* Table: acct_open_info                                        */
 /*==============================================================*/
-create table ACCT_OPEN_INFO
+create table acct_open_info
 (
    INFO_CODE            int not null auto_increment,
    USER_CODE            int not null,
@@ -75,12 +75,12 @@ create table ACCT_OPEN_INFO
    primary key (INFO_CODE)
 );
 
-alter table ACCT_OPEN_INFO comment '用于存放用户开户资料的信息';
+alter table acct_open_info comment '用于存放用户开户资料的信息';
 
 /*==============================================================*/
-/* Table: CAP_ACCT                                              */
+/* Table: cap_acct                                              */
 /*==============================================================*/
-create table CAP_ACCT
+create table cap_acct
 (
    CAP_CODE             varchar(12) not null,
    CUST_CODE            varchar(12) not null comment '前4位为营业网点编号',
@@ -95,12 +95,12 @@ create table CAP_ACCT
    primary key (CAP_CODE)
 );
 
-alter table CAP_ACCT comment '用于存放资金账户的信息（存放开户信息的一部分），一个客户账户可拥有至少一个资金账户';
+alter table cap_acct comment '用于存放资金账户的信息（存放开户信息的一部分），一个客户账户可拥有至少一个资金账户';
 
 /*==============================================================*/
-/* Table: CUST_ACCT                                             */
+/* Table: cust_acct                                             */
 /*==============================================================*/
-create table CUST_ACCT
+create table cust_acct
 (
    CUST_CODE            varchar(12) not null comment '前4位为营业网点编号',
    USER_CODE            int not null,
@@ -122,15 +122,16 @@ create table CUST_ACCT
    OPEN_TIME            bigint not null default 0,
    CLOSE_TIME           bigint not null default 0,
    CUST_STATUS          char(1) not null default '0',
-   primary key (CUST_CODE)
+   primary key (CUST_CODE),
+   unique key AK_Key_2 (ID_TYPE, ID_CODE)
 );
 
-alter table CUST_ACCT comment '用于存放客户账户的信息（存放开户信息的一部分），一个客户只有一个客户账户';
+alter table cust_acct comment '用于存放客户账户的信息（存放开户信息的一部分），一个客户只有一个客户账户';
 
 /*==============================================================*/
-/* Table: DEP_ACCT                                              */
+/* Table: dep_acct                                              */
 /*==============================================================*/
-create table DEP_ACCT
+create table dep_acct
 (
    DEP_CODE             varchar(12) not null,
    CAP_CODE             varchar(12) not null,
@@ -156,12 +157,12 @@ create table DEP_ACCT
    primary key (DEP_CODE)
 );
 
-alter table DEP_ACCT comment '用于存放存管账户的信息（存放开户信息的一部分），一个资金账户对应一个存管账户';
+alter table dep_acct comment '用于存放存管账户的信息（存放开户信息的一部分），一个资金账户对应一个存管账户';
 
 /*==============================================================*/
-/* Table: EMPLOYEE                                              */
+/* Table: employee                                              */
 /*==============================================================*/
-create table EMPLOYEE
+create table employee
 (
    EMPLOYEE_CODE        varchar(12) not null,
    USER_CODE            int not null,
@@ -175,12 +176,12 @@ create table EMPLOYEE
    primary key (EMPLOYEE_CODE)
 );
 
-alter table EMPLOYEE comment '用于存放员工信息';
+alter table employee comment '用于存放员工信息';
 
 /*==============================================================*/
-/* Table: IMAGE                                                 */
+/* Table: image                                                 */
 /*==============================================================*/
-create table IMAGE
+create table image
 (
    IMG_CODE             int not null auto_increment,
    ID_FRONT             varchar(50) not null,
@@ -189,12 +190,12 @@ create table IMAGE
    primary key (IMG_CODE)
 );
 
-alter table IMAGE comment '用于存放影像资料的url';
+alter table image comment '用于存放影像资料的url';
 
 /*==============================================================*/
-/* Table: MAIN_DATA_DICT                                        */
+/* Table: main_data_dict                                        */
 /*==============================================================*/
-create table MAIN_DATA_DICT
+create table main_data_dict
 (
    MAIN_CODE            int not null auto_increment,
    COL_NAME             varchar(10) not null,
@@ -203,25 +204,12 @@ create table MAIN_DATA_DICT
    primary key (MAIN_CODE)
 );
 
-alter table MAIN_DATA_DICT comment '用于存放数据字典主表信息';
+alter table main_data_dict comment '用于存放数据字典主表信息';
 
 /*==============================================================*/
-/* Table: OPERATION                                             */
+/* Table: opera_log                                             */
 /*==============================================================*/
-create table OPERATION
-(
-   OPERA_CODE           int not null auto_increment,
-   OPERA_NAME           varchar(15) not null,
-   MENU_CODE            varchar(15) not null,
-   primary key (OPERA_CODE)
-);
-
-alter table OPERATION comment '用于存放操作信息';
-
-/*==============================================================*/
-/* Table: OPERA_LOG                                             */
-/*==============================================================*/
-create table OPERA_LOG
+create table opera_log
 (
    LOG_CODE             int not null auto_increment comment '自增',
    EMPLOYEE_CODE        varchar(12) not null,
@@ -232,12 +220,25 @@ create table OPERA_LOG
    primary key (LOG_CODE)
 );
 
-alter table OPERA_LOG comment '记录员工操作流水';
+alter table opera_log comment '记录员工操作流水';
 
 /*==============================================================*/
-/* Table: ORGANIZATION                                          */
+/* Table: operation                                             */
 /*==============================================================*/
-create table ORGANIZATION
+create table operation
+(
+   OPERA_CODE           int not null auto_increment,
+   OPERA_NAME           varchar(15) not null,
+   MENU_CODE            varchar(15) not null,
+   primary key (OPERA_CODE)
+);
+
+alter table operation comment '用于存放操作信息';
+
+/*==============================================================*/
+/* Table: organization                                          */
+/*==============================================================*/
+create table organization
 (
    ORG_CODE             varchar(4) not null,
    ORG_NAME             varchar(20) not null,
@@ -246,24 +247,12 @@ create table ORGANIZATION
    primary key (ORG_CODE)
 );
 
-alter table ORGANIZATION comment '用于存放营业网点信息';
+alter table organization comment '用于存放营业网点信息';
 
 /*==============================================================*/
-/* Table: POSITION                                              */
+/* Table: pos_opera_rel                                         */
 /*==============================================================*/
-create table POSITION
-(
-   POS_CODE             int not null auto_increment,
-   POS_NAME             varchar(15) not null,
-   primary key (POS_CODE)
-);
-
-alter table POSITION comment '用于存放岗位信息';
-
-/*==============================================================*/
-/* Table: POS_OPERA_REL                                         */
-/*==============================================================*/
-create table POS_OPERA_REL
+create table pos_opera_rel
 (
    REL_CODE             int not null auto_increment,
    POS_CODE             int not null,
@@ -271,26 +260,39 @@ create table POS_OPERA_REL
    primary key (REL_CODE)
 );
 
-alter table POS_OPERA_REL comment '用于存放岗位与操作的关系';
+alter table pos_opera_rel comment '用于存放岗位与操作的关系';
 
 /*==============================================================*/
-/* Table: SUB_DATA_DICT                                         */
+/* Table: position                                              */
 /*==============================================================*/
-create table SUB_DATA_DICT
+create table position
+(
+   POS_CODE             int not null auto_increment,
+   POS_NAME             varchar(15) not null,
+   primary key (POS_CODE)
+);
+
+alter table position comment '用于存放岗位信息';
+
+/*==============================================================*/
+/* Table: sub_data_dict                                         */
+/*==============================================================*/
+create table sub_data_dict
 (
    SUB_CODE             int not null auto_increment,
    MAIN_CODE            int not null,
    VALUE_CODE           varchar(2) not null,
    VALUE                varchar(10) not null,
-   primary key (SUB_CODE)
+   primary key (SUB_CODE),
+   unique key AK_Key_2 (MAIN_CODE, VALUE_CODE)
 );
 
-alter table SUB_DATA_DICT comment '用于存放数据字典子表的信息';
+alter table sub_data_dict comment '用于存放数据字典子表的信息';
 
 /*==============================================================*/
-/* Table: SYS_PARA                                              */
+/* Table: sys_para                                              */
 /*==============================================================*/
-create table SYS_PARA
+create table sys_para
 (
    PARA_CODE            int not null auto_increment comment '自增',
    PARA_NAME            varchar(20) not null,
@@ -298,12 +300,12 @@ create table SYS_PARA
    primary key (PARA_CODE)
 );
 
-alter table SYS_PARA comment '用于存放系统参数信息';
+alter table sys_para comment '用于存放系统参数信息';
 
 /*==============================================================*/
-/* Table: TRD_ACCT                                              */
+/* Table: trd_acct                                              */
 /*==============================================================*/
-create table TRD_ACCT
+create table trd_acct
 (
    TRD_CODE             varchar(10) not null comment '前1位代表交易所类型',
    CUST_CODE            varchar(12) not null comment '前4位为营业网点编号',
@@ -317,67 +319,68 @@ create table TRD_ACCT
    primary key (TRD_CODE)
 );
 
-alter table TRD_ACCT comment '用于存放证券账户的信息，一个客户账户对应多个证券账户';
+alter table trd_acct comment '用于存放证券账户的信息，一个客户账户对应多个证券账户';
 
 /*==============================================================*/
-/* Table: USER                                                  */
+/* Table: user                                                  */
 /*==============================================================*/
-create table USER
+create table user
 (
    USER_CODE            int not null auto_increment,
    USER_TYPE            char(1) not null default '0',
    TELEPHONE            bigint(11) not null default 0,
    PASSWORD             varchar(32) not null,
-   primary key (USER_CODE)
+   primary key (USER_CODE),
+   unique key AK_Key_2 (TELEPHONE)
 );
 
-alter table USER comment '用于存放用户信息，一个用户仅对应一个客户账户';
+alter table user comment '用于存放用户信息，一个用户仅对应一个客户账户';
 
-alter table ACCT_OPEN_INFO add constraint FK_Reference_5 foreign key (IMG_CODE)
-      references IMAGE (IMG_CODE) on delete restrict on update restrict;
+alter table acct_open_info add constraint FK_Reference_5 foreign key (IMG_CODE)
+      references image (IMG_CODE) on delete restrict on update restrict;
 
-alter table ACCT_OPEN_INFO add constraint FK_Reference_7 foreign key (USER_CODE)
-      references USER (USER_CODE) on delete restrict on update restrict;
+alter table acct_open_info add constraint FK_Reference_7 foreign key (USER_CODE)
+      references user (USER_CODE) on delete restrict on update restrict;
 
-alter table CAP_ACCT add constraint FK_Reference_2 foreign key (CUST_CODE)
-      references CUST_ACCT (CUST_CODE) on delete restrict on update restrict;
+alter table cap_acct add constraint FK_Reference_2 foreign key (CUST_CODE)
+      references cust_acct (CUST_CODE) on delete restrict on update restrict;
 
-alter table CAP_ACCT add constraint FK_Reference_6 foreign key (ORG_CODE)
-      references ORGANIZATION (ORG_CODE) on delete restrict on update restrict;
+alter table cap_acct add constraint FK_Reference_6 foreign key (ORG_CODE)
+      references organization (ORG_CODE) on delete restrict on update restrict;
 
-alter table CUST_ACCT add constraint FK_Reference_11 foreign key (IMG_CODE)
-      references IMAGE (IMG_CODE) on delete restrict on update restrict;
+alter table cust_acct add constraint FK_Reference_11 foreign key (IMG_CODE)
+      references image (IMG_CODE) on delete restrict on update restrict;
 
-alter table CUST_ACCT add constraint FK_Reference_12 foreign key (ORG_CODE)
-      references ORGANIZATION (ORG_CODE) on delete restrict on update restrict;
+alter table cust_acct add constraint FK_Reference_12 foreign key (ORG_CODE)
+      references organization (ORG_CODE) on delete restrict on update restrict;
 
-alter table CUST_ACCT add constraint FK_Reference_9 foreign key (USER_CODE)
-      references USER (USER_CODE) on delete restrict on update restrict;
+alter table cust_acct add constraint FK_Reference_9 foreign key (USER_CODE)
+      references user (USER_CODE) on delete restrict on update restrict;
 
-alter table DEP_ACCT add constraint FK_Reference_10 foreign key (CAP_CODE)
-      references CAP_ACCT (CAP_CODE) on delete restrict on update restrict;
+alter table dep_acct add constraint FK_Reference_10 foreign key (CAP_CODE)
+      references cap_acct (CAP_CODE) on delete restrict on update restrict;
 
-alter table EMPLOYEE add constraint FK_Reference_15 foreign key (POS_CODE)
-      references POSITION (POS_CODE) on delete restrict on update restrict;
+alter table employee add constraint FK_Reference_15 foreign key (POS_CODE)
+      references position (POS_CODE) on delete restrict on update restrict;
 
-alter table EMPLOYEE add constraint FK_Reference_8 foreign key (USER_CODE)
-      references USER (USER_CODE) on delete restrict on update restrict;
+alter table employee add constraint FK_Reference_8 foreign key (USER_CODE)
+      references user (USER_CODE) on delete restrict on update restrict;
 
-alter table OPERA_LOG add constraint FK_Reference_16 foreign key (OPERA_CODE)
-      references OPERATION (OPERA_CODE) on delete restrict on update restrict;
+alter table opera_log add constraint FK_Reference_16 foreign key (OPERA_CODE)
+      references operation (OPERA_CODE) on delete restrict on update restrict;
 
-alter table OPERA_LOG add constraint FK_Reference_4 foreign key (EMPLOYEE_CODE)
-      references EMPLOYEE (EMPLOYEE_CODE) on delete restrict on update restrict;
+alter table opera_log add constraint FK_Reference_4 foreign key (EMPLOYEE_CODE)
+      references employee (EMPLOYEE_CODE) on delete restrict on update restrict;
 
-alter table POS_OPERA_REL add constraint FK_Reference_13 foreign key (POS_CODE)
-      references POSITION (POS_CODE) on delete restrict on update restrict;
+alter table pos_opera_rel add constraint FK_Reference_13 foreign key (POS_CODE)
+      references position (POS_CODE) on delete restrict on update restrict;
 
-alter table POS_OPERA_REL add constraint FK_Reference_14 foreign key (OPERA_CODE)
-      references OPERATION (OPERA_CODE) on delete restrict on update restrict;
+alter table pos_opera_rel add constraint FK_Reference_14 foreign key (OPERA_CODE)
+      references operation (OPERA_CODE) on delete restrict on update restrict;
 
-alter table SUB_DATA_DICT add constraint FK_Reference_1 foreign key (MAIN_CODE)
-      references MAIN_DATA_DICT (MAIN_CODE) on delete restrict on update restrict;
+alter table sub_data_dict add constraint FK_Reference_1 foreign key (MAIN_CODE)
+      references main_data_dict (MAIN_CODE) on delete restrict on update restrict;
 
-alter table TRD_ACCT add constraint FK_Reference_3 foreign key (CUST_CODE)
-      references CUST_ACCT (CUST_CODE) on delete restrict on update restrict;
+alter table trd_acct add constraint FK_Reference_3 foreign key (CUST_CODE)
+      references cust_acct (CUST_CODE) on delete restrict on update restrict;
 
