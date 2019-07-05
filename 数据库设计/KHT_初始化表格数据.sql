@@ -2898,7 +2898,17 @@ insert into pos_opera_rel values
 (
    0,
    2,
+   7
+),
+(
+   0,
+   2,
    8
+),
+(
+   0,
+   2,
+   9
 ),
 (
    0,
